@@ -4,19 +4,11 @@ function precmd {
   P1="%{$fg_bold[light_grey]%}%*%{$reset_color%}"
   P2="%{$fg[green]%}%m%{$reset_color%}"
 
-  if [ -e /proc/loadavg ]; then
-      load=( $(</proc/loadavg) )
+  if [[ -e /proc/loadavg ]]; then
+      load=$( cut -f1 -d' ' /proc/loadavg )
+      P3="[%{$fg[blue]%}$load%{$reset_color%}] "
   else
-      load=""
-  fi
-
-  P3=""
-  if [ $load ]; then
-      if [ ${load%.*} -ge 2 ]; then
-          P3="\[%{$bg[white]%}%{$fg[red]%}$load%{$reset_color%}\]"
-      else
-	  P3="\[%{$fg[blue]$load%{$reset_color%}\]"
-      fi
+      P3=""
   fi
 
   P4="%(?,%{$fg[green]%}☺%{$reset_color%},%{$fg[red]%}☹ [ $? ]%{$reset_color%})"
@@ -44,8 +36,8 @@ function precmd {
   fi
   
   PROMPT="
-$P2:%{$fg_bold[yellow]%}%~%{$reset_color%}$P3
-$P4 %# "
+$P2:%{$fg_bold[yellow]%}%~%{$reset_color%}
+$P3$P4 %# "
 
   RPROMPT="$(git_prompt_info)$(git_prompt_status)$STATUS $P1"
 }

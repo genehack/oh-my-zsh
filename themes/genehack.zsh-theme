@@ -71,9 +71,11 @@ function precmd {
   ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg[magenta]%}═%{$reset_color%}"
 
   STATUS=""
-  CHERRY=$(git cherry 2> /dev/null)
-  if [ -n "$CHERRY" ]; then
-      STATUS="%{$fg[cyan]%}↑%{$reset_color%}"
+  if [ ! $DISABLE_GIT_CHERRY ]; then
+      CHERRY=$(git cherry 2> /dev/null)
+      if [ -n "$CHERRY" ]; then
+          STATUS="%{$fg[cyan]%}↑%{$reset_color%}"
+      fi
   fi
 
   STASH=$(git stash list 2> /dev/null | tail -n1)

@@ -78,9 +78,11 @@ function precmd {
       fi
   fi
 
-  STASH=$(git stash list 2> /dev/null | tail -n1)
-  if [ -n "$STASH" ]; then
-      STATUS="%{$fg[red]%}%{$bg[white]%}↓%{$reset_color%}"
+  if [ ! $DISABLE_GIT_STASH ]; then
+      STASH=$(git stash list 2> /dev/null | tail -n1)
+      if [ -n "$STASH" ]; then
+          STATUS="%{$fg[red]%}%{$bg[white]%}↓%{$reset_color%}"
+      fi
   fi
   # /git info
 

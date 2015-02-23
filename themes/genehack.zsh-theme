@@ -2,8 +2,8 @@
 function svn_dir {
     [ -d ".svn" ] || return 1
 
-    autostash alias pull="svn up"
     autostash alias commit="svn commit"
+    autostash alias pull="svn up"
     autostash alias push="svn ci"
     autostash alias revert="svn revert"
 
@@ -28,8 +28,8 @@ function git_dir {
     autostash alias dc="d --cached"
     autostash alias l="git log"
     autostash alias lg="git lg"
-    autostash alias lp="l -p"
     autostash alias lgp="git lg -p"
+    autostash alias lp="l -p"
     autostash alias lss="l --stat --summary"
     autostash alias newbranch="git checkout -b"
     autostash alias pull="git pull"

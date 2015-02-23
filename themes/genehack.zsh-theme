@@ -3,6 +3,7 @@ function svn_dir {
     [ -d ".svn" ] || return 1
 
     autostash alias commit="svn commit"
+    autoshash alias d="svn diff"
     autostash alias pull="svn up"
     autostash alias push="svn ci"
     autostash alias revert="svn revert"
@@ -25,6 +26,7 @@ function git_dir {
 
     autostash alias cleanup="git fsck && git gc"
     autostash alias commit="git commit -s"
+    autostash alias d="D=$(which icdiff) ; if [ $? = 0 ]; then git icdiff; else git diff; fi"
     autostash alias dc="d --cached"
     autostash alias l="git log"
     autostash alias lg="git lg"
@@ -98,7 +100,6 @@ $P3$P4 %# "
 
   if [ -n "$vcs" ]; then
       autostash alias st="$vcs status"
-      autostash alias d="$vcs diff"
       autostash alias up="pull"
       autostash alias cdb="cd $base_dir"
   fi

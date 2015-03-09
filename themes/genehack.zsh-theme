@@ -3,7 +3,7 @@ function svn_dir {
     [ -d ".svn" ] || return 1
 
     autostash alias commit="svn commit"
-    autoshash alias d="svn diff"
+    autostash alias d="svn diff"
     autostash alias pull="svn up"
     autostash alias push="svn ci"
     autostash alias revert="svn revert"

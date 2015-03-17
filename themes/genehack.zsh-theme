@@ -26,7 +26,8 @@ function git_dir {
 
     autostash alias cleanup="git fsck && git gc"
     autostash alias commit="git commit -s"
-    autostash alias d="D=$(which icdiff) ; if [ $? = 0 ]; then git icdiff; else git diff; fi"
+    autostash alias d="git diff"
+    autostash alias di="D=$(which icdiff) ; if [ $? = 0 ]; then git icdiff; else git diff; fi"
     autostash alias dc="d --cached"
     autostash alias l="git log"
     autostash alias lg="git lg"

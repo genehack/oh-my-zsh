@@ -36,7 +36,7 @@ function git_dir {
     autostash alias lss="l --stat --summary"
     autostash alias newbranch="git checkout -b"
     autostash alias pull="git pull"
-    autostash alias push="git push && git push --tags"
+    autostash alias push="git push \$@ && git push --tags"
     autostash alias revert="git checkout"
 
     vcs=git

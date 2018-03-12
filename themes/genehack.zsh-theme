@@ -59,7 +59,7 @@ function precmd {
   fi
 
   # exit status and error come
-  P4="%(?,%{$fg[green]%}☺%{$reset_color%},%{$fg[red]%}☹ [ $? ]%{$reset_color%})"
+  P4="%(?,😀 ,☹ %{$fg[red]%}[ $? ]%{$reset_color%})"
 
   # git info
   ZSH_THEME_GIT_PROMPT_PREFIX=""

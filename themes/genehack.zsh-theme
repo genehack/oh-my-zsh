@@ -90,8 +90,8 @@ function precmd {
   # /git info
 
   PROMPT="
-$P2:%{$fg_bold[yellow]%}%~%{$reset_color%}
-$P3$P4 %# "
+$P4$P2:%{$fg_bold[yellow]%}%~%{$reset_color%}
+$P3%# "
 
   if [ $TERM != "eterm-color" ]; then
       RPROMPT="$(git_prompt_info)$(git_prompt_status)$STATUS $P1"
